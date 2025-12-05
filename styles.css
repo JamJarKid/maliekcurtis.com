@@ -92,9 +92,29 @@ h6 {
 }
 
 .hero h1 {
-  transition: font-family 0.25s ease-out 0.25s;
+  transition: font-family 1s;
 }
 
 .hero h1:hover {
   font-family: mokoto-glitch-2;
+  font-family: mokoto-glitch;
+  font-family: mokoto-glitch-outline;
+  animation-duration: 0.5s;
+  animation-name: glitch;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+
+@keyframes glitch {
+  from {
+    font-family: mokoto;
+  }
+
+  50% {
+    font-family: mokoto-glitch-2;
+  }
+
+  to {
+    font-family: mokoto-glitch;
+  }
 }
