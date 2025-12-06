@@ -99,7 +99,7 @@ h6 {
   font-family: mokoto-glitch-2;
   font-family: mokoto-glitch;
   font-family: mokoto-glitch-outline;
-  animation-duration: 0.5s;
+  animation-duration: 0.75s;
   animation-name: glitch;
   animation-iteration-count: infinite;
   animation-direction: reverse;
@@ -112,6 +112,10 @@ h6 {
 
   50% {
     font-family: mokoto-glitch-2;
+  }
+
+  75% {
+    font-family: mokoto;
   }
 
   to {
