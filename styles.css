@@ -33,7 +33,10 @@
 }
 
 :root {
-  --pink: #ffc5d3;
+  --bg-color: black;
+  --text-color: white;
+  --grid-color: #ffc5d3;
+  --accent-color: #ffc5d3;
 }
 
 body {
@@ -80,45 +83,180 @@ h6 {
   text-wrap: balance;
 }
 
+.cyberpunk-grid-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cyberpunk-grid {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+
+  background-image: linear-gradient(
+      to right,
+      var(--grid-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 30px 30px;
+  transform: perspective(1000px) rotateX(45deg) scale(3);
+  transform: skew(-30deg) scale(2.5);
+}
+
+.cyberpunk-grid::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: top center;
+  background: radial-gradient(circle, var(--bg-color) 25%, transparent 80%);
+  pointer-events: none;
+}
+
 .hero {
-  height: 100dvh;
-  width: 100dwh;
-  font-family: mokoto;
-  background-color: var(--pink);
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
-.hero h1 {
-  transition: font-family 1s;
+.title {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
 }
 
-.hero h1:hover {
-  font-family: mokoto-glitch-2;
-  font-family: mokoto-glitch;
-  font-family: mokoto-glitch-outline;
-  animation-duration: 0.75s;
+.title h2 {
+  font-size: clamp(1rem, 2rem, 2.5rem);
+}
+
+.hero h1,
+h2 {
+  margin: 0;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  cursor: default;
+  color: var(--text-color);
+
+  font-family: mokoto, sans-serif;
+}
+
+.hero h1:hover,
+h2:hover {
+  animation-duration: 1.5s;
   animation-name: glitch;
   animation-iteration-count: infinite;
-  animation-direction: reverse;
+  animation-direction: alternate;
+
+  text-shadow: 2px 2px 0px var(--accent-color);
 }
 
 @keyframes glitch {
   from {
     font-family: mokoto;
   }
-
-  50% {
+  20% {
     font-family: mokoto-glitch-2;
+  }
+  40% {
+    font-family: mokoto-glitch;
   }
 
   75% {
-    font-family: mokoto;
+    font-family: mokoto-glitch-outline;
   }
 
+  90% {
+    font-family: mokoto;
+  }
   to {
+    font-family: mokoto-glitch-2;
+  }
+}
+
+.status {
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.status-text {
+  overflow: hidden;
+  align-self: center;
+  border-right: 2rem solid var(--text-color);
+  white-space: nowrap;
+  margin: 0 auto;
+  /*
+  animation-duration: 5s;
+  animation-name: glitch-status;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+*/
+  animation:
+    glitch-status 5s infinite normal 5s,
+    typing 2.5s steps(15, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--text-color);
+  }
+}
+
+@keyframes glitch-status {
+  from {
+    font-family: mokoto;
+  }
+  10% {
+    font-family: mokoto-glitch-2;
+    text-shadow: 2px 2px 0px var(--accent-color);
+  }
+  15% {
+    font-family: mokoto-glitch-outline;
+    text-shadow: 2px 2px 0px var(--accent-color);
+  }
+  25% {
     font-family: mokoto-glitch;
+    text-shadow: 2px 2px 0px var(--accent-color);
+  }
+  30% {
+    font-family: mokoto;
+  }
+  to {
+    font-family: mokoto;
   }
 }
