@@ -33,10 +33,19 @@
 }
 
 :root {
-  --bg-color: #0d0d0d;
-  --text-color: #ccc;
+  --bg-color: hsl(0, 0%, 90%);
+  --text-color: hsl(0, 0%, 10%);
   --grid-color: #ffc5d3;
   --accent-color: #ffc5d3;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsl(0, 0%, 10%);
+    --text-color: hsl(0, 0%, 90%);
+    --grid-color: #ffc5d3;
+    --accent-color: hsl(126 100% 73.4%);
+  }
 }
 
 body {
@@ -160,23 +169,29 @@ h2 {
 @keyframes glitch {
   from {
     font-family: mokoto;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
   20% {
     font-family: mokoto-glitch-2;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
   40% {
     font-family: mokoto-glitch;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
 
   75% {
     font-family: mokoto-glitch-outline;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
 
   90% {
     font-family: mokoto;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
   to {
     font-family: mokoto-glitch-2;
+    text-shadow: 2px 2px 0px var(--accent-color);
   }
 }
 
