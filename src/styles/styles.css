@@ -22,16 +22,6 @@
   font-weight: regular;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-}
-
 :root {
   --bg-color: hsl(0, 0%, 90%);
   --text-color: hsl(0, 0%, 10%);
@@ -46,50 +36,6 @@
     --grid-color: #ffc5d3;
     --accent-color: hsl(126 100% 73.4%);
   }
-}
-
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-
-p {
-  text-wrap: pretty;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
 }
 
 .grid-container {
